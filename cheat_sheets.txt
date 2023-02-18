@@ -1,6 +1,14 @@
 # Пустые
-df.isna().sum() # - посмотреть наполняемость
-df.isna().sum()[df.isna().sum()>N] # - посмотреть N-столбцов по наполняемости
+df.isna().sum() # посмотреть наполняемость
+df.isna().sum()[df.isna().sum()>N] # посмотреть N-столбцов по наполняемости
+
+# колонки по типам данных
+df.dtypes.value_counts() # посмотреть колонки по типам данных
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-5/hw_5_smndyakonov.ipynb, 176 строка
+
+# pandas.DataFrame.select_dtypes - выбрать по типу
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-5/hw_5_smndyakonov.ipynb, 177 строка
+df.select_dtypes(['int64', 'float64'])
 
 # histplot с hue
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 225 строка
@@ -49,3 +57,5 @@ metrics.auc(fpr, tpr)
 
 # Настройка параметра kNN числа соседей на кросс-валидации
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 260 строка
+
+#Модели простой линейной регрессии, RidgeCV, LassoCV и ElasticNetCV
