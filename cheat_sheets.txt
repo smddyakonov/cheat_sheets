@@ -32,3 +32,19 @@ list_variable_feautre = df.nsmallest(n=k, columns=df[col]).index.tolist() # [lis
 
 # Резделение train test split: sklearn.model_selection.train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 249 строка
+
+# Моделирование kNN
+# class sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, *, weights='uniform', algorithm='auto', leaf_size=30, p=2, metric='minkowski', metric_params=None, n_jobs=None)
+# https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier()
+knn.fit(X_train_scaled, y_train)
+
+# ROC-кривая
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 258 строка
+from sklearn import metrics
+fpr, tpr, thresholds = metrics.roc_curve(y_test, y_pred, pos_label=2)
+metrics.auc(fpr, tpr)
+# Настройка параметра числа соседей на кросс-валидации
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 260 строка
