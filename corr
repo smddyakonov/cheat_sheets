@@ -1,0 +1,11 @@
+# Корреляции
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 231 строка
+df.corr() # - матрица корреляций [прямолинейная связь, y = kx +b]
+plt.subplots(figsize=(16,9))
+sns.heatmap(df.corr(), cmap=sns.color_palette("coolwarm", 10000), vmin=-1, center=0)
+plt.show()
+
+df.phik_matrix() # - матрица phik корреляций [линейная связь, y = kx +b, x^2, ln(x) и т.п.]
+plt.subplots(figsize=(16,9))
+sns.heatmap(df.phik_matrix(), cmap=sns.color_palette("coolwarm", 10000), vmin=-1, center=0)
+plt.show()
