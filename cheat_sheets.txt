@@ -39,6 +39,7 @@ list_variable_feautre = df.nsmallest(n=k, columns=df[col]).index.tolist() # [lis
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
 knn.fit(X_train_scaled, y_train)
+# Ex.:  https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 255 строка
 
 # ROC-кривая
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 258 строка
