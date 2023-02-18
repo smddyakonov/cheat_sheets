@@ -1,7 +1,8 @@
+________________
 # Пустые
 df.isna().sum() # посмотреть наполняемость
 df.isna().sum()[df.isna().sum()>N] # посмотреть N-столбцов по наполняемости
-
+________________
 # колонки по типам данных
 df.dtypes.value_counts() # посмотреть колонки по типам данных
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-5/hw_5_smndyakonov.ipynb, 176 строка
@@ -9,13 +10,31 @@ df.dtypes.value_counts() # посмотреть колонки по типам �
 # pandas.DataFrame.select_dtypes - выбрать по типу
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-5/hw_5_smndyakonov.ipynb, 177 строка
 df.select_dtypes(['int64', 'float64'])
-
+________________
 # histplot с hue
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 225 строка
 # функция для построения histplot с hue [hue - Семантическая переменная, которая сопоставляется для определения цвета элементов графика]
 def graf(df, col):
     return sns.histplot(data=df, x=df[col], hue=col_hue, multiple="dodge", shrink=0.8) 
+________________
+# гистограммы и графики плотности распределения признаков для числовых, непрерывных переменных
+# окружение для графиков, для каждой колонки два столбца
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-5/hw_5_smndyakonov.ipynb, 179 строка
+fig, axs = plt.subplots(nrows=len(columns), ncols=2, figsize=(7,20))
 
+for index, column in enumerate(columns):
+    # В первом столбце гистограмма
+    df[column].hist(ax=axs[index, 0])
+    axs[index, 0].set_title(f'Histogram: {column}', fontsize=12)
+    axs[index, 0].set_ylabel('Count', fontsize=12)
+        
+    # Во втором столбце график сглаженной плотности распределения на основе ядерной оценки
+    df[column].plot(kind='kde', ax=axs[index, 1])
+    axs[index, 1].set_title(f'Kernel density estimate: {column}', fontsize=12)
+
+plt.tight_layout(pad=3.0)
+plt.show()
+________________
 # Корреляции
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 231 строка
 df.corr() # - матрица корреляций [прямолинейная связь, y = kx +b]
@@ -27,20 +46,20 @@ df.phik_matrix() # - матрица phik корреляций [линейная 
 plt.subplots(figsize=(16,9))
 sns.heatmap(df.phik_matrix(), cmap=sns.color_palette("coolwarm", 10000), vmin=-1, center=0)
 plt.show()
-
+________________
 # nlargest Возвращает первые n строк, упорядоченных по столбцам в порядке убывания df.nlargest(n, columns, keep='first')
 list_variable_feautre = df.nlargest(n=k, columns=df[col]).index.tolist() # [list_variable_feautre - список переменных признаков]
 # Ex.: k nlargest коррелюрующих признаков 
 # https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 238 строка "выберем k nlargest признаков по стоблцу df_temp[corr_matrix]"
-
+________________
 # nsmallest Возвращает первые n строк, упорядоченных по столбцам в порядке возрастания df.nsmallest(n, columns, keep='first')
 list_variable_feautre = df.nsmallest(n=k, columns=df[col]).index.tolist() # [list_variable_feautre - список переменных признаков]
 # Ex.: k nsmallest коррелюрующих признаков 
 # https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 242 строка "выберем ksmal nsmallest признаков по стоблцу df_temp[corr_matrix]"
-
+________________
 # Резделение train test split: sklearn.model_selection.train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 249 строка
-
+________________
 # Моделирование kNN
 # class sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, *, weights='uniform', algorithm='auto', leaf_size=30, p=2, metric='minkowski', metric_params=None, n_jobs=None)
 # https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
@@ -48,14 +67,14 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
 knn.fit(X_train_scaled, y_train)
 # Ex.:  https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 255 строка
-
+________________
 # ROC-кривая
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 258 строка
 from sklearn import metrics
 fpr, tpr, thresholds = metrics.roc_curve(y_test, y_pred, pos_label=2)
 metrics.auc(fpr, tpr)
-
+________________
 # Настройка параметра kNN числа соседей на кросс-валидации
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 260 строка
-
+________________
 #Модели простой линейной регрессии, RidgeCV, LassoCV и ElasticNetCV
