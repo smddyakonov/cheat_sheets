@@ -3,7 +3,7 @@ df.isna().sum() # - посмотреть наполняемость
 df.isna().sum()[df.isna().sum()>N] # - посмотреть N-столбцов по наполняемости
 
 # histplot с hue
-Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 225 строка
+# Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-4/hw_4_smndyakonov.ipynb, 225 строка
 # функция для построения histplot с hue [hue - Семантическая переменная, которая сопоставляется для определения цвета элементов графика]
 def graf(df, col):
     return sns.histplot(data=df, x=df[col], hue=col_hue, multiple="dodge", shrink=0.8) 
