@@ -1,7 +1,17 @@
 ________________
+# Наполняемость
+name_col = name_column # имя колонки, ex. name_col = 'districts'
+df_temp = pd.DataFrame([df[name_col].value_counts(normalize = True, dropna = False), df[name_col].value_counts(dropna = False)]).T
+df_temp.columns = f'{name_col}_%', f'{name_col}_counts'
+df_temp
+________________
 # Пустые
 df.isna().sum() # посмотреть наполняемость
 df.isna().sum()[df.isna().sum()>N] # посмотреть N-столбцов по наполняемости
+
+df_NaN = df.isna().sum()/df.shape[0] # посмотреть % наполняемость
+df_NaN[df_NaN {>;<;==} N_%] # посмотреть столбцы с N_% по наполняемости
+df_NaN[(df_NaN {>;<;==} N1_%) {&;|} (df_NaN {>;<;==} N2_%)} ] # посмотреть столбцы с N1_% до N2_% по наполняемости
 ________________
 # колонки по типам данных
 df.dtypes.value_counts() # посмотреть колонки по типам данных
