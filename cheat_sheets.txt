@@ -34,7 +34,6 @@ for el in columns_temp:
     ax1 = df.loc[df['Class'] == 0, el].plot(kind='kde', ax = ax)
     ax2 = df.loc[df['Class'] == 1, el].plot(kind='kde', ax = ax, grid = True, title = el).legend(['0', '1'])
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-11/hw-11_smndyakonov.ipynb, 14 строка
-
 ________________
 # hist 
 columns_temp = df.select_dtypes(['float64']).columns
@@ -44,7 +43,6 @@ for el in columns_temp:
     ax1 = df.loc[df['Class'] == 0, el].plot(kind='hist', ax = ax, alpha = 0.3)
     ax2 = df.loc[df['Class'] == 1, el].plot(kind='hist', ax = ax, grid = True, title = el).legend(['0', '1'])
 # Ex.: https://github.com/smddyakonov/otus_ds_dyakonov/blob/main/hw-11/hw-11_smndyakonov.ipynb, 15 строка
-
 ________________
 # гистограммы и графики плотности распределения признаков для числовых, непрерывных переменных
 # окружение для графиков, для каждой колонки два столбца
