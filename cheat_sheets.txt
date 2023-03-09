@@ -26,7 +26,6 @@ ________________
 # функция для построения histplot с hue [hue - Семантическая переменная, которая сопоставляется для определения цвета элементов графика]
 def graf(df, col):
     return sns.histplot(data=df, x=df[col], hue=col_hue, multiple="dodge", shrink=0.8) 
-
 ________________
 # kde 
 columns_temp = df.select_dtypes(['float64']).columns
