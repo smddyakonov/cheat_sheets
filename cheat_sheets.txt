@@ -1,3 +1,7 @@
+# функция вовращает имя переменной дата-фрейма
+def get_df_name(df):
+    name =[x for x in globals() if globals()[x] is df][0]
+    return name
 ________________
 # Наполняемость
 name_col = name_column # имя колонки, ex. name_col = 'districts'
