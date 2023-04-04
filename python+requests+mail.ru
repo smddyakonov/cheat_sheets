@@ -18,6 +18,18 @@ message['text'] = 'Привет, это тестовое сообщение.'
 with open('image.jpg', 'rb') as f:
     files = {'attachment': ('image.jpg', f.read(), 'image/jpeg')}
 
+# добавление file.xlsx в качестве вложения
+with open('path/to/your/file.xlsx', 'rb') as f:
+    files = {'attachment': ('file.xlsx', f.read(), 'application/vnd.ms-excel')}
+
+# добавление file.pdf в качестве вложения
+with open('path/to/your/file.pdf', 'rb') as f:
+    files = {'attachment': ('file.pdf', f.read(), 'application/pdf')}
+    
+# добавление file.docx в качестве вложения
+with open('path/to/your/file.docx', 'rb') as f:
+    files = {'attachment': ('file.docx', f.read(), 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
+
 # отправка сообщения
 response = requests.post(
     'https://smtp.mail.ru:465/messages',
