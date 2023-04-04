@@ -1,0 +1,60 @@
+# зададим массив текстов
+some_texts = [
+   'текст номер один',
+   'текст следующий под номером два',
+   'третий набор слов',
+]
+df_text = pd.DataFrame({'texts': some_texts})
+ 
+# А к данному тексту будем искать наиболее похожий из заданного выше набора
+find_nearest_to = 'текст'
+ 
+# формирование весов tf-idf
+tfidf = TfidfVectorizer()
+mx_tf = tfidf.fit_transform(some_texts)
+new_entry = tfidf.transform([find_nearest_to])
+ 
+# расчет косинусного расстояния
+cosine_similarities = linear_kernel(new_entry, mx_tf).flatten()
+ 
+# запишем все попарные результаты сравнений
+df_text['cos_similarities'] = cosine_similarities
+# и отсортируем по убыванию (т.к. cos(0)=1)
+df_text = df_text.sort_values(by=['cos_similarities'], ascending=[0])
+ 
+# Выведем 3 самых близких результата
+for index, row in df_text[0:3].iterrows():
+    print(row['texts'], row['cos_similarities'])
+    
+# output:
+# текст номер один 0.7891589913464455
+# текст следующий под номером два 0.23490553492076713
+# третий набор слов 0.0
+
+Для сравнения двух списков строк и подбора наиболее похожих элементов можно использовать косинусное сходство. 
+Код на Python для этого может выглядеть следующим образом:
+
+```
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Два списка строк для сравнения
+list1 = ['apple', 'banana', 'orange', 'peach']
+list2 = ['banana', 'peach', 'watermelon', 'pear']
+
+# Создание векторизатора и матрицы частот слов
+vectorizer = CountVectorizer().fit_transform(list1 + list2)
+freq_matrix = vectorizer.toarray()
+
+# Вычисление косинусного сходства между списками
+similarity_matrix = cosine_similarity(freq_matrix)
+
+# Поиск наиболее похожих элементов
+for i in range(len(list1)):
+    most_similar_idx = np.argsort(similarity_matrix[i])[::-1][1]
+    print(f"{list1[i]} is most similar to {list2[most_similar_idx]}")
+```
+
+В данном примере мы используем модули `CountVectorizer` и `cosine_similarity` из библиотеки `scikit-learn`. 
+Сначала мы объединяем два списка в один и создаем векторизатор, который преобразует каждый элемент списка в вектор, содержащий частоты слов. 
+Затем мы вычисляем матрицу косинусного сходства между всеми парами элементов списка и находим наиболее похожий элемент для каждого элемента из первого списка.
