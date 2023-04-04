@@ -1,6 +1,6 @@
 Для отправки письма с вложениями в Python с помощью библиотеки smtplib можно использовать следующий код:
 
-```python
+```
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
