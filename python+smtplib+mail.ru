@@ -1,39 +1,3 @@
-# данные отправителя и получателя
-sender_email = 'sender_email@mail.ru'
-sender_password = 'sender_password' #пароль для внешних подключений получаем в  mail.ru
-receiver_email = 'receiver_email@mail.ru'
-
-# создание объекта сообщения
-message = EmailMessage()
-message['Subject'] = 'Тестовое сообщение'
-message['From'] = sender_email
-message['To'] = receiver_email
-
-# добавление текста сообщения
-message.set_content('Привет, это тестовое сообщение.')
-
-# добавление изображения в качестве вложения
-with open('path/to/your/file.jpg', 'rb') as f:
-    files = {'attachment': ('image.jpg', f.read(), 'image/jpeg')}
-
-# добавление file.xlsx в качестве вложения
-with open('path/to/your/file.xlsx', 'rb') as f:
-    files = {'attachment': ('file.xlsx', f.read(), 'application/vnd.ms-excel')}
-
-# добавление file.pdf в качестве вложения
-with open('path/to/your/file.pdf', 'rb') as f:
-    files = {'attachment': ('file.pdf', f.read(), 'application/pdf')}
-    
-# добавление file.docx в качестве вложения
-with open('path/to/your/file.docx', 'rb') as f:
-    files = {'attachment': ('file.docx', f.read(), 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
-
-    
-# отправка сообщения
-with smtplib.SMTP_SSL('smtp.mail.ru', 465) as smtp:
-    smtp.login(sender_email, sender_password)
-    smtp.send_message(message)
-
 Для отправки письма с вложениями в Python с помощью библиотеки smtplib можно использовать следующий код:
 
 ```python
@@ -44,7 +8,7 @@ from email.mime.application import MIMEApplication
 
 # Данные для авторизации на почтовом сервере
 email = 'your_email@mail.ru'
-password = 'your_password'
+password = 'your_password' #пароль для внешних подключений, получаю в настройках mail.ru
 
 # Формирование сообщения
 msg = MIMEMultipart()
@@ -73,6 +37,10 @@ server.sendmail(email, 'recipient_email@mail.ru', msg.as_string())
 server.quit()
 ```
 
-В этом примере мы используем классы MIMEText, MIMEMultipart и MIMEApplication из модуля email для формирования письма с текстом и вложениями. Метод attach() используется для добавления текста и каждого вложения в сообщение. Затем мы подключаемся к почтовому серверу с помощью smtplib, отправляем сообщение и закрываем соединение. 
+В этом примере мы используем классы MIMEText, MIMEMultipart и MIMEApplication из модуля email для формирования письма с текстом и вложениями. 
+Метод attach() используется для добавления текста и каждого вложения в сообщение. 
+Затем мы подключаемся к почтовому серверу с помощью smtplib, отправляем сообщение и закрываем соединение. 
 
-Обратите внимание, что для отправки писем через mail.ru необходимо использовать стандартный порт SMTP (587) и перед отправкой вызвать метод starttls() для защиты передачи данных. Также убедитесь, что вы указали правильные данные для авторизации на сервере (email и password).
+Обратите внимание, что для отправки писем через mail.ru необходимо использовать стандартный порт SMTP (587) 
+и перед отправкой вызвать метод starttls() для защиты передачи данных. 
+Также убедитесь, что вы указали правильные данные для авторизации на сервере (email и password).
