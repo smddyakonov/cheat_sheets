@@ -89,5 +89,37 @@ def my_style_function(feature):
 
 folium.GeoJson(geojson, style_function=my_style_function).add_to(m)
 
+Ex. colormap
+Конечно, вот пример использования folium.colormap.LinearColormap:
 
+import folium
+from branca.colormap import LinearColormap
+
+# Создаем объект LinearColormap с указанием начального и конечного цветов,
+# а также интервала значений, для которых будет создана цветовая схема.
+colormap = LinearColormap(colors=['red', 'yellow', 'green'], vmin=0, vmax=1000)
+
+# Создаем объект карты
+m = folium.Map(location=[48.8566, 2.3522], zoom_start=12)
+
+# Создаем объект GeoJSON и добавляем его на карту,
+# задавая цвет заполнения для каждого объекта на основе значения свойства 'value'
+folium.GeoJson(
+    data=geojson_data,
+    style_function=lambda feature: {
+        'fillColor': colormap(feature['properties']['value']),
+        'color': 'black',
+        'weight': 2,
+        'dashArray': '5, 5'
+    }
+).add_to(m)
+
+# Добавляем легенду на карту
+colormap.add_to(m)
+
+# Отображаем карту
+m
+
+
+В этом примере мы создаем объект LinearColormap с указанием начального и конечного цветов ('red' и 'green' соответственно) и интервала значений (vmin=0 и vmax=1000), для которых будет создана цветовая схема. Затем мы создаем объект карты m и добавляем на него объект GeoJSON, задавая цвет заполнения для каждого объекта на основе значения свойства 'value'. Для этого мы используем лямбда-функцию style_function, которая извлекает значение свойства 'value' из объекта feature и передает его в метод colormap, чтобы получить соответствующий цвет. Мы также задаем цвет обводки, толщину и стиль линий для каждого объекта. Затем мы добавляем легенду на карту, используя метод add_to объекта colormap, и отображаем карту с помощью метода m.
 Здесь geojson - это GeoJSON объект, который вы хотите добавить на карту, а m - это объект Folium карты.
