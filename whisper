@@ -1,0 +1,32 @@
+Colab
+
+вариант-1
+#установки
+!pip install git+https://github.com/openai/whisper.git
+!sudo apt update && sudo apt install ffmpeg
+
+->> загрузить файл в content
+!whisper имя файла
+
+вариант-2
+#установки
+!pip install git+https://github.com/openai/whisper.git
+!sudo apt update && sudo apt install ffmpeg
+
+->> загрузить файл в content: 
+
+import whisper
+
+#выбрать модель
+model = whisper.load_model("base") #base
+model = whisper.load_model("large") #large
+
+result = model.transcribe("/content/test.mp3") #/content/test.mp3 - имя файла
+
+print(result)
+print(result['text'].split('.'))
+
+#сохранить в *.txt
+with open('output.txt', 'w') as f: #'output.txt' - имя файла, появляется в /content/output.txt
+    for sentence in result1['text'].split('.'):
+        f.write(sentence.strip() + '.\n')
