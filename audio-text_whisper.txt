@@ -1,6 +1,7 @@
 https://github.com/openai/whisper
 
-Colab
+
+Colab: https://vc.ru/s/1385474-gimz/611304-rasshifrovyvaem-audio-v-tekst-na-99-yazykah-kak-ispolzovat-whisper-ot-sozdateley-chatgpt-pryamo-v-brauzere
 вариант-1
 #установки
 !pip install git+https://github.com/openai/whisper.git
@@ -9,7 +10,7 @@ Colab
 ->> загрузить файл в content
 !whisper /content/test.mp3 #имя файла
 
-вариант-2
+вариант-2 
 #установки
 !pip install git+https://github.com/openai/whisper.git
 !sudo apt update && sudo apt install ffmpeg
