@@ -1,6 +1,6 @@
+https://github.com/openai/whisper
 
 Colab
-
 вариант-1
 #установки
 !pip install git+https://github.com/openai/whisper.git
@@ -32,5 +32,6 @@ with open('output.txt', 'w') as f: #'output.txt' - имя файла, появл
     for sentence in result1['text'].split('.'):
         f.write(sentence.strip() + '.\n')
 
+local
 вариант 3 - https://www.youtube.com/watch?v=R5XVWIUQbfI&t=327s
 cmd: whisper test.mp3 
