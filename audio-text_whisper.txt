@@ -1,3 +1,4 @@
+
 Colab
 
 вариант-1
@@ -30,3 +31,6 @@ print(result['text'].split('.'))
 with open('output.txt', 'w') as f: #'output.txt' - имя файла, появляется в /content/output.txt
     for sentence in result1['text'].split('.'):
         f.write(sentence.strip() + '.\n')
+
+вариант 3 - https://www.youtube.com/watch?v=R5XVWIUQbfI&t=327s
+cmd: whisper test.mp3 
