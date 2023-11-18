@@ -6,7 +6,7 @@ Colab
 !sudo apt update && sudo apt install ffmpeg
 
 ->> загрузить файл в content
-!whisper имя файла
+!whisper /content/test.mp3 #имя файла
 
 вариант-2
 #установки
