@@ -36,7 +36,10 @@ with open('output.txt', 'w') as f: #'output.txt' - имя файла, появл
 
 cmd local
 вариант 3 - https://www.youtube.com/watch?v=R5XVWIUQbfI&t=327s
-cmd: whisper test.mp3 
+memory model: https://github.com/openai/whisper/discussions/5
+
+cmd: whisper test.mp3
+cmd: whisper --language ru --model large --device CPU  -o ./result -- test.mp3
 
 conda local
 https://youtu.be/R5pZPpIIUzA?si=uP2ZjPz7A3GgWtqQ
