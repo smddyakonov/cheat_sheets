@@ -34,6 +34,9 @@ with open('output.txt', 'w') as f: #'output.txt' - имя файла, появл
     for sentence in result1['text'].split('.'):
         f.write(sentence.strip() + '.\n')
 
-local
+cmd local
 вариант 3 - https://www.youtube.com/watch?v=R5XVWIUQbfI&t=327s
 cmd: whisper test.mp3 
+
+conda local
+https://youtu.be/R5pZPpIIUzA?si=uP2ZjPz7A3GgWtqQ
