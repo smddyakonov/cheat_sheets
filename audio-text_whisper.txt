@@ -21,7 +21,7 @@ Colab: https://vc.ru/s/1385474-gimz/611304-rasshifrovyvaem-audio-v-tekst-na-99-y
 import whisper
 
 #выбрать модель
-model = whisper.load_model("base") #base GPU = false, use fp16 = False
+model = whisper.load_model("base") #base
 model = whisper.load_model("large") #large
 
 result = model.transcribe("/content/test.mp3") #/content/test.mp3 - имя файла
