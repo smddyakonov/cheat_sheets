@@ -1,0 +1,45 @@
+audio_to_text_vosk
+
+#статья: https://proglib.io/p/reshaem-zadachu-perevoda-russkoy-rechi-v-tekst-s-pomoshchyu-python-i-biblioteki-vosk-2022-06-30
+
+#у меня файлы .3GPP 
+cmd:
+ffmpeg -i in.3gp -c:a libmp3lame output.mp3
+ffmpeg -i in.3GPP -c:a libmp3lame output.mp3
+
+#ffmpeg - https://youtu.be/R5XVWIUQbfI?t=150
+
+#python:
+from vosk import Model, KaldiRecognizer, SetLogLevel
+from pydub import AudioSegment
+import subprocess
+import json
+import os
+import pyaudio #?
+
+SetLogLevel(0) #?
+
+# Устанавливаем Frame Rate
+FRAME_RATE = 16000
+CHANNELS=1
+
+model = Model("model") #model - путь, например C:/.../vosk/model/vosk-model-small-ru-0.22
+rec = KaldiRecognizer(model, FRAME_RATE)
+rec.SetWords(True)
+
+# Используя библиотеку pydub делаем предобработку аудио
+mp3 = AudioSegment.from_mp3('output.mp3')
+mp3 = mp3.set_channels(CHANNELS)
+mp3 = mp3.set_frame_rate(FRAME_RATE)
+
+# Преобразуем вывод в json
+rec.AcceptWaveform(mp3.raw_data)
+result = rec.Result()
+text = json.loads(result)["text"]
+
+# Добавляем пунктуацию (без этого работает)
+cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True, text=True, input=text)
+
+# Записываем результат в файл "data.txt"
+with open('data.txt', 'w') as f:
+    json.dump(cased, f, ensure_ascii=False, indent=4)
