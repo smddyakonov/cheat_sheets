@@ -37,6 +37,11 @@ rec.AcceptWaveform(mp3.raw_data)
 result = rec.Result()
 text = json.loads(result)["text"]
 
+# Записываем результат в файл "data.txt"
+with open('data.txt', 'w') as f:
+    json.dump(text, f, ensure_ascii=False, indent=4)
+
+#Дополнительно Добавляем пунктуацию
 # Добавляем пунктуацию (без этого работает)
 cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True, text=True, input=text)
 
