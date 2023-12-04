@@ -40,6 +40,10 @@ text = json.loads(result)["text"]
 # Добавляем пунктуацию (без этого работает)
 cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True, text=True, input=text)
 
+# Или Добавляем пунктуацию (без этого работает)
+command = r'C:\...\vosk\model\vosk-recasepunc-ru-0.22\recasepunc.py predict C:\...\vosk\model\vosk-recasepunc-ru-0.22\checkpoint'
+cased = subprocess.check_output(command, shell=True, text=True)
+
 # Записываем результат в файл "data.txt"
 with open('data.txt', 'w') as f:
     json.dump(cased, f, ensure_ascii=False, indent=4)
