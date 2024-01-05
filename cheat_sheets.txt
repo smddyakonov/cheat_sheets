@@ -1,3 +1,17 @@
+# функция парсинга xlsx-файла
+def get_xlsx(file, path = None, parse_flag = False, sheet_name = None):
+    if path == None:
+        file = Path(Path.cwd(), file) #файл в папке с ноутбуком
+    else: file = Path(path, file) #файл в другой папке
+    xl = pd.ExcelFile(file)
+    
+    if parse_flag == False: #если parse_flag == False, то печатать имя папки и имена листов
+        print(file)
+        print(xl.sheet_names)
+    else: 
+        df = xl.parse(sheet_name) #иначе спарсить sheet_name
+        return df
+
 # функция вовращает имя переменной дата-фрейма
 def get_df_name(df):
     name =[x for x in globals() if globals()[x] is df][0]
