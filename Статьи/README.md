@@ -13,3 +13,10 @@
  - https://habr.com/ru/articles/808733/
 ## T-test. Зависимость от независимости
  - https://habr.com/ru/companies/X5Tech/articles/807001/
+
+## Temp
+https://habr.com/ru/articles/807051/
+https://habr.com/ru/companies/securityvison/articles/760170/
+https://habr.com/ru/companies/bastion/articles/806195/
+https://habr.com/ru/articles/809181/
+https://habr.com/ru/articles/805985/
