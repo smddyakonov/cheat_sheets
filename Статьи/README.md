@@ -21,3 +21,6 @@
 - https://habr.com/ru/articles/809181/
 - https://habr.com/ru/articles/805985/
 - https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
+- https://habr.com/ru/companies/otus/articles/805801/
+- https://habr.com/ru/articles/805271/
+- https://habr.com/ru/articles/804605/
