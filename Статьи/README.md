@@ -25,3 +25,6 @@
 - https://habr.com/ru/articles/805271/
 - https://habr.com/ru/articles/804605/
 - https://habr.com/ru/articles/804135/
+- https://habr.com/ru/companies/yandex_praktikum/articles/802299/
+- https://habr.com/ru/articles/804329/
+- https://habr.com/ru/articles/802399/
