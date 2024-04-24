@@ -13,14 +13,20 @@
  - https://habr.com/ru/articles/808733/
 ## T-test. Зависимость от независимости
  - https://habr.com/ru/companies/X5Tech/articles/807001/
+## Индуктивная статистика: доверительные интервалы, предельные ошибки, размер выборки и проверка гипотез
+ - https://habr.com/ru/articles/807051/
+## ChatGPT на темной и светлой стороне
+ - https://habr.com/ru/companies/securityvison/articles/760170/
+## 90+ дашбордов для OSINT и глобального мониторинга
+ - https://habr.com/ru/companies/bastion/articles/806195/
+ ## ГАЙД по python стеку для Data Science инженеров
+ - https://habr.com/ru/articles/809181/
+## Алгоритм расчёта расстояния между строками
+ - https://habr.com/ru/articles/805985/
+## Time Series Analysis: ARIMA Models in Python (eng)
+- https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
 
 ## Temp
-- https://habr.com/ru/articles/807051/
-- https://habr.com/ru/companies/securityvison/articles/760170/
-- https://habr.com/ru/companies/bastion/articles/806195/
-- https://habr.com/ru/articles/809181/
-- https://habr.com/ru/articles/805985/
-- https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
 - https://habr.com/ru/companies/otus/articles/805801/
 - https://habr.com/ru/articles/805271/
 - https://habr.com/ru/articles/804605/
