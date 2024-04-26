@@ -34,3 +34,12 @@
 - https://habr.com/ru/companies/yandex_praktikum/articles/802299/
 - https://habr.com/ru/articles/804329/
 - https://habr.com/ru/articles/802399/
+- https://habr.com/ru/amp/publications/709596/
+- https://habr.com/ru/articles/803869/
+- https://habr.com/ru/articles/803997/
+- https://habr.com/ru/articles/799725/
+- https://pythonist.ru/kak-sozdavat-naglyadnye-grafiki-v-python-bystro-krasivo-i-ochen-krasivo/?clckid=aa34497d
+- https://habr.com/ru/companies/ddosguard/articles/808475/
+- https://habr.com/ru/companies/otus/articles/809147/
+- https://habr.com/ru/articles/799725/
+- https://habr.com/ru/articles/802185/
