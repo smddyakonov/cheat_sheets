@@ -25,7 +25,7 @@
  - https://habr.com/ru/articles/805985/
 ## Time Series Analysis: ARIMA Models in Python (eng)
 - https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
-## TКоординатный квест: как найти координаты и расстояния без регистраций и смс
+## Координатный квест: как найти координаты и расстояния без регистраций и смс
 - https://habr.com/ru/articles/735098/
 
 ## Temp
