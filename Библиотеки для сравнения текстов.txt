@@ -20,6 +20,35 @@ import numpy as np
 import Levenshtein
 
 def fuzzy_search(column1, column2):
+    """
+    Выполняет сравнение строк из двух колонок с использованием различных методов:
+    - Косинусное сходство (TF-IDF)
+    - Расстояние Левенштейна
+    - FuzzyWuzzy (близость строк)
+    - Difflib (сходство строк)
+
+    Параметры:
+    ----------
+    column1 : list[str]
+        Список строк для поиска (эталонные значения).
+    column2 : list[str]
+        Список строк для сравнения (целевые значения).
+
+    Возвращает:
+    ----------
+    pd.DataFrame
+        DataFrame, содержащий результаты сравнения для каждой строки из column2:
+        - Исходный текст: строка из column2
+        - Совпадение (Косинус): наиболее похожая строка по косинусному сходству
+        - Значение (Косинус): значение косинусного сходства
+        - Совпадение (Левенштейн): наиболее похожая строка по расстоянию Левенштейна
+        - Значение (Левенштейн): значение расстояния Левенштейна
+        - Совпадение (FuzzyWuzzy): наиболее похожая строка по FuzzyWuzzy
+        - Значение (FuzzyWuzzy): значение метрики FuzzyWuzzy
+        - Совпадение (Difflib): наиболее похожая строка по Difflib
+        - Значение (Difflib): значение сходства Difflib
+        - Мода совпадений: наиболее часто встречающееся совпадение среди методов
+    """
     results = {
         "Исходный текст": [],
         "Совпадение (Косинус)": [],
@@ -32,37 +61,37 @@ def fuzzy_search(column1, column2):
         "Значение (Difflib)": [],
         "Мода совпадений": []
     }
-    
+
     # Создаем и обучаем TfidfVectorizer
     tfidf_vectorizer = TfidfVectorizer()
     tfidf_matrix = tfidf_vectorizer.fit_transform(column1)
-    
+
     for search_str in column2:
         # Косинусное сходство
         search_vector = tfidf_vectorizer.transform([search_str])
         cosine_similarities = cosine_similarity(search_vector, tfidf_matrix).flatten()
-        
+
         # Находим максимальное значение косинусного сходства
         max_cosine_index = np.argmax(cosine_similarities)
         max_cosine_value = cosine_similarities[max_cosine_index]
         cosine_match = column1[max_cosine_index] if max_cosine_value > 0 else None
-        
+
         # Расстояние Левенштейна
         levenshtein_match = min(column1, key=lambda x: Levenshtein.distance(search_str, x))
         levenshtein_distance = Levenshtein.distance(search_str, levenshtein_match)
-        
+
         # FuzzyWuzzy
         fuzzy_matches = [(text, fuzz.ratio(search_str, text)) for text in column1]
         fuzzy_match, fuzzy_score = max(fuzzy_matches, key=lambda x: x[1]) if fuzzy_matches else (None, 0)
-        
+
         # Difflib
         difflib_matches = [(text, SequenceMatcher(None, search_str, text).ratio()) for text in column1]
         difflib_match, difflib_score = max(difflib_matches, key=lambda x: x[1]) if difflib_matches else (None, 0)
-        
+
         # Мода совпадений
         matches = [cosine_match, levenshtein_match, fuzzy_match, difflib_match]
         mode_match = pd.Series(matches).mode()[0] if pd.Series(matches).mode().size > 0 else None
-        
+
         # Добавляем результаты в словарь
         results["Исходный текст"].append(search_str)
         results["Совпадение (Косинус)"].append(cosine_match)
@@ -85,4 +114,5 @@ column2 = ["appl", "banan", "grapefuit"]
 
 results_df = fuzzy_search(column1, column2)
 print(results_df)
+
 
