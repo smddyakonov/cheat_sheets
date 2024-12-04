@@ -11,11 +11,13 @@ natasha
 набор Python-библиотек для обработки текстов на естественном русском языке
 conda install -c conda-forge natasha
 
-import pandas as pd
-from fuzzywuzzy import fuzz
-from difflib import SequenceMatcher
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from fuzzywuzzy import fuzz
+from difflib import SequenceMatcher
+import pandas as pd
+import numpy as np
+import Levenshtein
 
 def fuzzy_search(column1, column2):
     results = {
@@ -27,17 +29,18 @@ def fuzzy_search(column1, column2):
         "Совпадение (FuzzyWuzzy)": [],
         "Значение (FuzzyWuzzy)": [],
         "Совпадение (Difflib)": [],
-        "Значение (Difflib)": []
+        "Значение (Difflib)": [],
+        "Мода совпадений": []
     }
     
-    # Векторизуем первый столбец
-    vectorizer = TfidfVectorizer().fit_transform(column1)
-    vectors = vectorizer.toarray()
+    # Создаем и обучаем TfidfVectorizer
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(column1)
     
     for search_str in column2:
         # Косинусное сходство
-        search_vector = vectorizer.transform([search_str]).toarray()
-        cosine_similarities = cosine_similarity(search_vector, vectors).flatten()
+        search_vector = tfidf_vectorizer.transform([search_str])
+        cosine_similarities = cosine_similarity(search_vector, tfidf_matrix).flatten()
         
         # Находим максимальное значение косинусного сходства
         max_cosine_index = np.argmax(cosine_similarities)
@@ -56,6 +59,10 @@ def fuzzy_search(column1, column2):
         difflib_matches = [(text, SequenceMatcher(None, search_str, text).ratio()) for text in column1]
         difflib_match, difflib_score = max(difflib_matches, key=lambda x: x[1]) if difflib_matches else (None, 0)
         
+        # Мода совпадений
+        matches = [cosine_match, levenshtein_match, fuzzy_match, difflib_match]
+        mode_match = pd.Series(matches).mode()[0] if pd.Series(matches).mode().size > 0 else None
+        
         # Добавляем результаты в словарь
         results["Исходный текст"].append(search_str)
         results["Совпадение (Косинус)"].append(cosine_match)
@@ -66,6 +73,7 @@ def fuzzy_search(column1, column2):
         results["Значение (FuzzyWuzzy)"].append(fuzzy_score)
         results["Совпадение (Difflib)"].append(difflib_match)
         results["Значение (Difflib)"].append(difflib_score)
+        results["Мода совпадений"].append(mode_match)
 
     # Создаем DataFrame из результатов
     df_results = pd.DataFrame(results)
@@ -77,3 +85,4 @@ column2 = ["appl", "banan", "grapefuit"]
 
 results_df = fuzzy_search(column1, column2)
 print(results_df)
+
