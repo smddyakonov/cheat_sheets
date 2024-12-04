@@ -115,4 +115,112 @@ column2 = ["appl", "banan", "grapefuit"]
 results_df = fuzzy_search(column1, column2)
 print(results_df)
 
+def fuzzy_search_v2(column1, column2):
+    """
+    Функция для выполнения нечеткого поиска между двумя колонками текстовых данных.
+    Реализованы различные методы сравнения: косинусное сходство, расстояние Левенштейна, FuzzyWuzzy, Difflib,
+    Жаро, Джаккарда и Дамерау-Левенштейна.
 
+    Параметры:
+        column1 (list): Список строк, по которым осуществляется поиск (эталонные данные).
+        column2 (list): Список строк, которые необходимо сравнить с эталонными.
+
+    Возвращает:
+        pd.DataFrame: Таблица с результатами, содержащая следующие колонки:
+            - Исходный текст
+            - Совпадения и значения для каждого метода сравнения
+            - Мода совпадений
+    """
+    results = {
+        "Исходный текст": [],
+        "Совпадение (Косинус)": [],
+        "Значение (Косинус)": [],
+        "Совпадение (Левенштейн)": [],
+        "Значение (Левенштейн)": [],
+        "Совпадение (FuzzyWuzzy)": [],
+        "Значение (FuzzyWuzzy)": [],
+        "Совпадение (Difflib)": [],
+        "Значение (Difflib)": [],
+        "Совпадение (Жаро)": [],
+        "Значение (Жаро)": [],
+        "Совпадение (Джаккард)": [],
+        "Значение (Джаккард)": [],
+        "Совпадение (Дамерау-Левенштейн)": [],
+        "Значение (Дамерау-Левенштейн)": [],
+        "Мода совпадений": []
+    }
+
+    # Создаем и обучаем TfidfVectorizer
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(column1)
+
+    for search_str in tqdm(column2, desc="Processing strings"):
+        # Косинусное сходство
+        search_vector = tfidf_vectorizer.transform([search_str])
+        cosine_similarities = cosine_similarity(search_vector, tfidf_matrix).flatten()
+        max_cosine_index = np.argmax(cosine_similarities)
+        max_cosine_value = cosine_similarities[max_cosine_index]
+        cosine_match = column1[max_cosine_index] if max_cosine_value > 0 else None
+
+        # Расстояние Левенштейна
+        levenshtein_match = min(column1, key=lambda x: Levenshtein.distance(search_str, x))
+        levenshtein_distance = Levenshtein.distance(search_str, levenshtein_match)
+
+        # FuzzyWuzzy
+        fuzzy_matches = [(text, fuzz.ratio(search_str, text)) for text in column1]
+        fuzzy_match, fuzzy_score = max(fuzzy_matches, key=lambda x: x[1]) if fuzzy_matches else (None, 0)
+
+        # Difflib
+        difflib_matches = [(text, SequenceMatcher(None, search_str, text).ratio()) for text in column1]
+        difflib_match, difflib_score = max(difflib_matches, key=lambda x: x[1]) if difflib_matches else (None, 0)
+
+        # Жаро
+        jaro_matches = [(text, Levenshtein.jaro(search_str, text)) for text in column1]
+        jaro_match, jaro_score = max(jaro_matches, key=lambda x: x[1]) if jaro_matches else (None, 0)
+
+        # Джаккард
+        def jaccard_distance(s1, s2):
+            set1, set2 = set(s1), set(s2)
+            intersection = len(set1 & set2)
+            union = len(set1 | set2)
+            return 1 - intersection / union if union != 0 else 1
+
+        jaccard_matches = [(text, jaccard_distance(search_str, text)) for text in column1]
+        jaccard_match, jaccard_score = min(jaccard_matches, key=lambda x: x[1]) if jaccard_matches else (None, 1)
+
+        # Дамерау-Левенштейн
+        damerau_matches = [(text, Levenshtein.distance(search_str, text)) for text in column1]
+        damerau_match, damerau_score = min(damerau_matches, key=lambda x: x[1]) if damerau_matches else (None, 0)
+
+        # Мода совпадений
+        matches = [cosine_match, levenshtein_match, fuzzy_match, difflib_match, jaro_match, jaccard_match, damerau_match]
+        mode_match = pd.Series(matches).mode()[0] if pd.Series(matches).mode().size > 0 else None
+
+        # Добавляем результаты в словарь
+        results["Исходный текст"].append(search_str)
+        results["Совпадение (Косинус)"].append(cosine_match)
+        results["Значение (Косинус)"].append(max_cosine_value)
+        results["Совпадение (Левенштейн)"].append(levenshtein_match)
+        results["Значение (Левенштейн)"].append(levenshtein_distance)
+        results["Совпадение (FuzzyWuzzy)"].append(fuzzy_match)
+        results["Значение (FuzzyWuzzy)"].append(fuzzy_score)
+        results["Совпадение (Difflib)"].append(difflib_match)
+        results["Значение (Difflib)"].append(difflib_score)
+        results["Совпадение (Жаро)"].append(jaro_match)
+        results["Значение (Жаро)"].append(jaro_score)
+        results["Совпадение (Джаккард)"].append(jaccard_match)
+        results["Значение (Джаккард)"].append(jaccard_score)
+        results["Совпадение (Дамерау-Левенштейн)"].append(damerau_match)
+        results["Значение (Дамерау-Левенштейн)"].append(damerau_score)
+        results["Мода совпадений"].append(mode_match)
+
+    # Создаем DataFrame из результатов
+    df_results = pd.DataFrame(results)
+    return df_results
+
+# Пример использования
+column1 = ["apple", "banana", "orange", "grapefruit"]
+column2 = ["appl", "banan", "grapefuit"]
+
+results_df = fuzzy_search_v2(column1, column2)
+print(results_df)
