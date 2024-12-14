@@ -1,6 +1,10 @@
 # Статьи
+## Матстат в одной схеме / Хабр
+ - https://habr.com/ru/articles/847120/
 ## Материалы для подготовки к собеседованию на позицию Data Scientist. Часть 3: Специализированное машинное обучение
  - https://habr.com/ru/companies/megafon/articles/808585/
+## ММатериалы для подготовки к собеседованию на позицию Data Scientist. Часть 5: Поведенческое интервью + Бонусы
+ - https://habr.com/ru/companies/megafon/articles/808585/ 
 ## Как общаться с базой знаний на естественном языке с помощью LLM и объективно оценить работу полученной системы
  - https://habr.com/ru/companies/doubletapp/articles/808153/
 ## Использование LLM в автоматизации рутинных задач
@@ -17,6 +21,8 @@
  - https://habr.com/ru/articles/807051/
 ## ChatGPT на темной и светлой стороне
  - https://habr.com/ru/companies/securityvison/articles/760170/
+## Что не так с ИИ-юристами
+ - https://habr.com/ru/articles/848050/
 ## 90+ дашбордов для OSINT и глобального мониторинга
  - https://habr.com/ru/companies/bastion/articles/806195/
  ## ГАЙД по python стеку для Data Science инженеров
@@ -24,10 +30,25 @@
 ## Алгоритм расчёта расстояния между строками
  - https://habr.com/ru/articles/805985/
 ## Time Series Analysis: ARIMA Models in Python (eng)
-- https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
+ - https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
 ## Координатный квест: как найти координаты и расстояния без регистраций и смс
-- https://habr.com/ru/articles/735098/
+ - https://habr.com/ru/articles/735098/
 
+## MS Excel прогнозирование и экспоненциальное сглаживание
+ - https://youtube.com/watch?v=dfvrIw4pcRE&si=Ky3pxtyr9nPNXOeo
+
+## Как создать дашборд в Superset: гайд для новичков и полезные лайфхаки / Хабр
+ - https://habr.com/ru/companies/okko/articles/859140/
+## Дашборд как инструмент взаимодействия с бизнесом / Хабр
+ - https://habr.com/ru/companies/beeline_tech/articles/847596/
+## Data Warehouse, Data Lake, Data Lakehouse, Data Fabric, Data Mesh – что это такое, и в чем разница между концепциями
+- https://habr.com/ru/articles/846296/
+## Дашборды без слёз: 8 практических советов из книги Тома Гривера по коммуникации с заказчиком для BI-разработчика
+ - https://habr.com/ru/companies/citydrive/articles/845922/
+
+## Машинное обучение без кодинга для фронтенд-задач. Разбираем работу фреймворка MediaPipe
+ - https://habr.com/ru/companies/oleg-bunin/articles/735024/
+  
 ## Temp
 - https://habr.com/ru/companies/otus/articles/805801/
 - https://habr.com/ru/articles/805271/
