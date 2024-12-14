@@ -9,22 +9,36 @@
  - https://habr.com/ru/companies/X5Tech/articles/846298/
 ## T-test. Зависимость от независимости
  - https://habr.com/ru/companies/X5Tech/articles/807001/
+## Критерий Манна-Уитни — самый главный враг A/B-тестов
+ - https://habr.com/ru/amp/publications/709596/
 ## Индуктивная статистика: доверительные интервалы, предельные ошибки, размер выборки и проверка гипотез
  - https://habr.com/ru/articles/807051/
 
+## Популярные алгоритмы машинного обучения. Теоретические основы и реализация с нуля на Python
+ - https://habr.com/ru/articles/804605/
 ## Материалы для подготовки к собеседованию на позицию Data Scientist. Часть 3: Специализированное машинное обучение
  - https://habr.com/ru/companies/megafon/articles/808585/
 ## Материалы для подготовки к собеседованию на позицию Data Scientist. Часть 5: Поведенческое интервью + Бонусы
  - https://habr.com/ru/companies/megafon/articles/808585/
 ## Разбираемся в ROC и AUC
 - https://habr.com/ru/companies/otus/articles/809147/
-  
+## Линейная регрессия. Основная идея, модификации и реализация с нуля на Python
+- https://habr.com/ru/articles/804135/
+## Градиентный бустинг. Реализация с нуля на Python и разбор особенностей его модификаций (XGBoost, CatBoost, LightGBM)
+- https://habr.com/ru/articles/799725/
+## Метод опорных векторов (SVM). Подходы, принцип работы и реализация с нуля на Python
+- https://habr.com/ru/articles/802185/
 ## Автоматически выделяем кусочно-линейные тренды временного ряда
  - https://habr.com/ru/articles/808733/
 ## Time Series Analysis: ARIMA Models in Python (eng)
  - https://www.kdnuggets.com/2023/08/times-series-analysis-arima-models-python.html
 ## Пространство двумерного времени / Хабр
  - https://habr.com/ru/articles/842054/
+## Анализ новостей с помощью сегментации и кластеризации временных рядов
+- https://habr.com/ru/companies/otus/articles/805801/
+
+ ## ГАЙД по python стеку для Data Science инженеров
+ - https://habr.com/ru/articles/809181/
 
 ## Как общаться с базой знаний на естественном языке с помощью LLM и объективно оценить работу полученной системы
  - https://habr.com/ru/companies/doubletapp/articles/808153/
@@ -44,17 +58,14 @@
  - https://habr.com/ru/articles/848480/
 ## Алгоритм расчёта расстояния между строками
  - https://habr.com/ru/articles/805985/
-      
+## Максимизируем продуктивность: Создание ИИ-секретаря с Whisper и ChatGPT
+ - https://habr.com/ru/articles/804329/   
 ## 90+ дашбордов для OSINT и глобального мониторинга
  - https://habr.com/ru/companies/bastion/articles/806195/
- ## ГАЙД по python стеку для Data Science инженеров
- - https://habr.com/ru/articles/809181/
 
 ## Координатный квест: как найти координаты и расстояния без регистраций и смс
  - https://habr.com/ru/articles/735098/
 
-## MS Excel прогнозирование и экспоненциальное сглаживание
- - https://youtube.com/watch?v=dfvrIw4pcRE&si=Ky3pxtyr9nPNXOeo
 ## В помощь разработчику: 6 полезных библиотек визуализации данных / Хабр
  - https://habr.com/ru/companies/ru_mts/articles/841498/
  ## Шпаргалка по визуализации данных в Python с помощью Plotly
@@ -72,6 +83,8 @@
  - https://habr.com/ru/companies/oleg-bunin/articles/735024/
 ## Автоматизация тестирования для системного аналитика. Применение Selenium и написание скрипта на Python
  - https://habr.com/ru/articles/843520/
+## Гайд для системного аналитика: как управлять требованиями на разных этапах проекта. Часть 1: Инициация
+ - https://habr.com/ru/companies/yandex_praktikum/articles/802299/
 ## Проверка содержимого PDF-файлов средствами Python и pdfminer. Часть 2 / Хабр
  - https://habr.com/ru/companies/auriga/articles/845926/
 ## Почта без хлопот: автоматизация отправки писем с помощью Python
@@ -84,24 +97,12 @@
    
 ## Полезные Youtube-каналы / Хабр
  - https://habr.com/ru/articles/844818/
+## MS Excel прогнозирование и экспоненциальное сглаживание
+ - https://youtube.com/watch?v=dfvrIw4pcRE&si=Ky3pxtyr9nPNXOeo
    
-## Анализ новостей с помощью сегментации и кластеризации временных рядов
-- https://habr.com/ru/companies/otus/articles/805801/
-
 ## Temp
-
-- https://habr.com/ru/articles/805271/
-- https://habr.com/ru/articles/804605/
-- https://habr.com/ru/articles/804135/
-- https://habr.com/ru/companies/yandex_praktikum/articles/802299/
-- https://habr.com/ru/articles/804329/
-- https://habr.com/ru/articles/802399/
-- https://habr.com/ru/amp/publications/709596/
-- https://habr.com/ru/articles/803869/
-- https://habr.com/ru/articles/803997/
-- https://habr.com/ru/articles/799725/
-- https://pythonist.ru/kak-sozdavat-naglyadnye-grafiki-v-python-bystro-krasivo-i-ochen-krasivo/?clckid=aa34497d
-- https://habr.com/ru/companies/ddosguard/articles/808475/
-
-- https://habr.com/ru/articles/799725/
-- https://habr.com/ru/articles/802185/
+- https://habr.com/ru/articles/805271/ (Pandas: от хаоса к красоте кода)
+- https://habr.com/ru/articles/803869/ (Парсинг веб-сайтов: взгляд изнутри)
+- https://habr.com/ru/articles/803997/ (Рекуррентные сети против трансформеров)
+- https://pythonist.ru/kak-sozdavat-naglyadnye-grafiki-v-python-bystro-krasivo-i-ochen-krasivo/?clckid=aa34497d (Как создавать наглядные графики в Python: быстро, красиво и очень красиво)
+- https://habr.com/ru/companies/ddosguard/articles/808475/ (Визуализируй это: как я обучаю джунов и ставлю задачи через диаграммы и графики)
